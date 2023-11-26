@@ -4,7 +4,7 @@ namespace App\Http\DataAccess;
 
 use Illuminate\Support\Facades\DB;
 
-class UserAccess
+class UserDTO
 {
 
     public static function getAllUsers(): array
