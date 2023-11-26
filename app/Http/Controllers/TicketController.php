@@ -12,7 +12,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //get ticket
+        //get tickets
         try {
             $list = Ticket::list_tickets();
             return [
@@ -38,7 +38,22 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (empty($request)) {
+            return "Request empty";
+        }
+
+        // try {
+        //     $data = $request->all();
+        //     $new_ticket = Ticket::create_ticket($data);
+
+        //     return [
+        //         "message" => "Ticket Created Successfully",
+        //         "data" => $new_ticket,
+        //         "status_code" => 200
+        //     ];
+        // } catch (\Throwable $error) {
+        //     return $error->__toString();
+        // }
     }
 
     /**
@@ -46,7 +61,19 @@ class TicketController extends Controller
      */
     public function show(string $id)
     {
-        //
+        try {
+
+            $ticket = Ticket::get_ticket($id);
+
+            return [
+                "message" => "Ticket fetched successfully",
+                "status_code" => 200,
+                "data" => $ticket
+            ];
+        } catch (\Throwable $error) {
+
+            return $error->__toString();
+        }
     }
 
     /**
@@ -62,7 +89,19 @@ class TicketController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+
+            $ticket = $request->all();
+            $update_ticket = Ticket::update_ticket($id, $ticket);
+
+            return [
+                "message" => 'Ticket Updated Successfully',
+                "status_code" => 200,
+                "data" => $update_ticket
+            ];
+        } catch (\Throwable $error) {
+            return $error->__toString();
+        }
     }
 
     /**
