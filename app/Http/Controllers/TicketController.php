@@ -15,7 +15,11 @@ class TicketController extends Controller
         //get ticket
         try {
             $list = Ticket::list_tickets();
-            return $list;
+            return [
+                "message" => "Tickets fetched successfully",
+                "status_code" => 200,
+                "data" => $list
+            ];
         } catch (\Throwable $error) {
             throw $error->__toString();
         }
