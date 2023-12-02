@@ -18,7 +18,7 @@ class TicketController extends Controller
             return [
                 "message" => "Tickets fetched successfully",
                 "status_code" => 200,
-                "data" => $list
+                "content" => $list
             ];
         } catch (\Throwable $error) {
             throw $error->__toString();
@@ -68,7 +68,7 @@ class TicketController extends Controller
             return [
                 "message" => "Ticket fetched successfully",
                 "status_code" => 200,
-                "data" => $ticket
+                "content" => $ticket
             ];
         } catch (\Throwable $error) {
 
@@ -97,7 +97,7 @@ class TicketController extends Controller
             return [
                 "message" => 'Ticket Updated Successfully',
                 "status_code" => 200,
-                "data" => $update_ticket
+                "content" => $update_ticket
             ];
         } catch (\Throwable $error) {
             return $error->__toString();
